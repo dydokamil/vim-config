@@ -25,7 +25,10 @@ Plug 'alvan/vim-closetag'
 Plug 'itchyny/lightline.vim'
 " Plug 'chrisbra/Colorizer'
 Plug 'Valloric/YouCompleteMe'
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8'
+Plug 'eemed/noxtra'
+Plug 'matveyt/vim-modest'
 Plug 'mileszs/ack.vim'
 Plug 'w0rp/ale'
 " Plug 'scrooloose/nerdcommenter'
@@ -34,6 +37,12 @@ Plug 'tpope/vim-fugitive'
 
 " Initialize plugin system
 call plug#end()
+
+set termguicolors
+set t_Co=256
+let g:solarized_termcolors=256
+set background=light
+colorscheme solarized8
 
 set tabstop=2
 set shiftwidth=2
@@ -76,6 +85,7 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:ctrlp_show_hidden = 1
 
 " NERDTree
+map <C-x> :NERDTreeFind<CR>
 map <C-b> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
@@ -149,7 +159,6 @@ let g:closetag_shortcut = '>'
 let g:closetag_close_shortcut = '<leader>>'
 
 " Replace filename component of Lightline statusline
-set background=light
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
@@ -193,3 +202,8 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " color column 
 set colorcolumn=101
+
+" spell checker
+let mapleader = ","
+nmap <silent> <leader>s :set spell!<CR>
+
