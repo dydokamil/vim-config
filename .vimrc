@@ -1,3 +1,16 @@
+let g:coc_global_extensions = [
+  \ 'coc-css',
+  \ 'coc-eslint',
+  \ 'coc-highlight',
+  \ 'coc-html',
+  \ 'coc-json',
+  \ 'coc-prettier',
+  \ 'coc-snippets',
+  \ 'coc-stylelint',
+  \ 'coc-svg',
+  \ 'coc-tsserver'
+  \ ]
+
 call plug#begin('~/.vim/plugged')
 
 Plug '~/my-prototype-plugin'
@@ -5,10 +18,9 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'airblade/vim-gitgutter'
 Plug 'alvan/vim-closetag'
 Plug 'itchyny/lightline.vim'
-Plug 'Valloric/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() } }
 Plug 'lifepillar/vim-solarized8'
 Plug 'mileszs/ack.vim'
-Plug 'w0rp/ale'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'camspiers/lens.vim'
@@ -126,31 +138,35 @@ nnoremap <space>gb :Gblame<CR>
 nnoremap <space>gf :Gdiff<CR>
 nnoremap <space>n :noh<CR>
 
-" YCM
-nnoremap <space>gd :YcmCompleter GoToDefinition<CR>
-nnoremap <space>gt :YcmCompleter GoToType<CR>
-nnoremap <space>gr :YcmCompleter GoToReferences<CR>
-nnoremap <space>d :YcmCompleter GetDoc<CR>
-nnoremap <space>r :YcmCompleter RefactorRename
-nnoremap <space>f :YcmCompleter Format<CR>
-nnoremap <space>o :YcmCompleter OrganizeImports<CR>
-nnoremap <space>x :YcmCompleter FixIt<CR>
+" coc.nvim 
+nmap <silent><space>gd <Plug>(coc-definition)
+nmap <silent><space>gi <Plug>(coc-implementation)
+nmap <silent><space>gt <Plug>(coc-type-definition)
+nmap <silent><space>gr <Plug>(coc-references)
+nnoremap <silent><space>d :call <SID>show_documentation()<CR>
+nnoremap <silent><space>o :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
+nmap <space>r <Plug>(coc-rename)
+vmap <space>f  <Plug>(coc-format-selected)
+xmap <space>f  <Plug>(coc-format-selected)
+nmap <space>f  <Plug>(coc-format-selected)
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " Show full path of filename
 function! FilenameForLightline()
     return expand('%')
 endfunction
 
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 hi Search ctermbg=LightYellow
 let g:NERDTreeNodeDelimiter = "\u00a0"
-
-let g:ale_linters = { 'vue': ['eslint', 'vls'] }
-let g:ale_linter_aliases = { 'vue': ['javascript', 'vue'] }
-let g:ale_fixers = { '*': ['prettier', 'eslint'] }
-
-" let g:ale_sign_error = '❌'
-" let g:ale_sign_warning = '⚠️'
-let g:ale_fix_on_save = 1
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -171,3 +187,4 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 " spell checker
 let mapleader = ","
 nmap <silent> <leader>s :set spell!<CR>
+
