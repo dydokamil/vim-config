@@ -6,7 +6,7 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-prettier',
   \ 'coc-snippets',
-  \ 'coc-stylelint',
+  \ 'coc-styled-components',
   \ 'coc-svg',
   \ 'coc-tsserver'
   \ ]
@@ -73,7 +73,7 @@ set backspace=indent,eol,start
 
 " ctrlp
 map <C-p> :CtrlP<CR>
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|next'
 let g:ctrlp_show_hidden = 1
 
 " NERDTree
@@ -188,3 +188,17 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 let mapleader = ","
 nmap <silent> <leader>s :set spell!<CR>
 
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
