@@ -20,7 +20,6 @@ Plug 'alvan/vim-closetag'
 Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() } }
 Plug 'lifepillar/vim-solarized8'
-Plug 'mileszs/ack.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'camspiers/lens.vim'
@@ -73,7 +72,7 @@ set backspace=indent,eol,start
 
 " ctrlp
 map <C-p> :CtrlP<CR>
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|next'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|next\|storybook-static'
 let g:ctrlp_show_hidden = 1
 
 " NERDTree
@@ -149,6 +148,7 @@ nmap <space>r <Plug>(coc-rename)
 vmap <space>f  <Plug>(coc-format-selected)
 xmap <space>f  <Plug>(coc-format-selected)
 nmap <space>f  <Plug>(coc-format-selected)
+nmap <space>s :CocSearch 
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -177,9 +177,6 @@ filetype plugin on
 
 let &t_SI="\033[5 q" " start insert mode
 let &t_EI="\033[1 q" " end insert mode
-
-" ack/ag
-let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " color column
 " set colorcolumn=101
