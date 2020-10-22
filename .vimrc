@@ -138,7 +138,7 @@ nmap <space>r <Plug>(coc-rename)
 vmap <space>f  <Plug>(coc-format-selected)
 xmap <space>f  <Plug>(coc-format-selected)
 nmap <space>f  <Plug>(coc-format-selected)
-nmap <space>s :CocSearch
+nmap <space>s :CocSearch 
 nnoremap <silent> <space>e :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <space>m :<C-u>CocList -I symbols<cr>
 nmap <space>y  <Plug>(coc-codeaction)
