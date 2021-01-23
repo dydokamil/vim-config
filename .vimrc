@@ -1,14 +1,19 @@
 let g:coc_global_extensions = [
   \ 'coc-css',
   \ 'coc-eslint',
+  \ 'coc-flow',
   \ 'coc-highlight',
   \ 'coc-html',
   \ 'coc-json',
   \ 'coc-prettier',
   \ 'coc-snippets',
   \ 'coc-styled-components',
+  \ 'coc-stylelintplus',
   \ 'coc-svg',
-  \ 'coc-tsserver'
+  \ 'coc-tsserver',
+  \ 'coc-rls',
+  \ 'coc-rust-analyzer',
+  \ 'coc-graphql'
   \ ]
 
 call plug#begin('~/.vim/plugged')
@@ -20,12 +25,13 @@ Plug 'alvan/vim-closetag'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() } }
-Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'camspiers/lens.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'posva/vim-vue'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -73,10 +79,8 @@ set backspace=indent,eol,start
 " theme
 let g:airline_theme='papercolor'
 
-" ctrlp
-map <C-p> :CtrlP<CR>
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|next\|storybook-static'
-let g:ctrlp_show_hidden = 1
+" fzf
+map <C-p> :GFiles --cached --others --exclude-standard<CR>
 
 " NERDTree
 map <C-x> :NERDTreeFind<CR>
@@ -194,3 +198,5 @@ let g:coc_snippet_prev = '<c-k>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+set timeoutlen=1000 ttimeoutlen=0
