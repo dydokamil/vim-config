@@ -2,15 +2,17 @@ let g:coc_global_extensions = [
   \ 'coc-css',
   \ 'coc-eslint',
   \ 'coc-flow',
+  \ 'coc-graphql',
   \ 'coc-highlight',
   \ 'coc-html',
   \ 'coc-json',
   \ 'coc-prettier',
-  \ 'coc-snippets',
-  \ 'coc-styled-components',
-  \ 'coc-svg',
   \ 'coc-rls',
   \ 'coc-rust-analyzer',
+  \ 'coc-snippets',
+  \ 'coc-styled-components',
+  \ 'coc-stylelintplus',
+  \ 'coc-svg',
   \ 'coc-tsserver'
   \ ]
 
