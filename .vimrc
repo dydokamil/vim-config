@@ -32,6 +32,8 @@ Plug 'posva/vim-vue'
 Plug 'rakr/vim-one'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'preservim/tagbar'
+Plug 'puremourning/vimspector'
 
 " Initialize plugin system
 call plug#end()
@@ -218,3 +220,11 @@ let g:coc_snippet_prev = '<c-k>'
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 set timeoutlen=1000 ttimeoutlen=0
+
+" tagbar
+nnoremap <space>gy :TagbarToggle<CR>
+
+" vimspector
+let g:vimspector_enable_mappings = 'HUMAN'
+let g:gitgutter_sign_priority = 1
+let g:gitgutter_sign_allow_clobber = 1
