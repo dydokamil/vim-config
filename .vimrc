@@ -103,9 +103,9 @@ let g:airline_theme='one'
 map <C-p> :GFiles --cached --others --exclude-standard<CR>
 
 " NERDTree
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap <space>tn :NERDTree<CR>
+nnoremap <space>tt :NERDTreeToggle<CR>
+nnoremap <space>tf :NERDTreeFind<CR>
 let NERDTreeShowHidden=1
 
 " vim-closetag
@@ -225,3 +225,8 @@ nnoremap <space>gy :TagbarToggle<CR>
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:gitgutter_sign_priority = 1
 let g:gitgutter_sign_allow_clobber = 1
+
+nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
