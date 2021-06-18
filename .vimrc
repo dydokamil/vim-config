@@ -103,13 +103,10 @@ let g:airline_theme='one'
 map <C-p> :GFiles --cached --others --exclude-standard<CR>
 
 " NERDTree
-map <C-x> :NERDTreeFind<CR>
-map <C-b> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 let NERDTreeShowHidden=1
-
-" YCM
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " vim-closetag
 " filenames like *.xml, *.html, *.xhtml, ...
