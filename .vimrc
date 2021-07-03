@@ -96,8 +96,9 @@ imap <c-q> <esc>:q<cr>
 " allow for the removal of characters directly after entering the edit mode
 set backspace=indent,eol,start
 
-" theme
+" airline
 let g:airline_theme='one'
+let g:airline#extensions#tabline#enabled = 1
 
 " fzf
 map <C-p> :GFiles --cached --others --exclude-standard<CR>
