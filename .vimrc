@@ -34,6 +34,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/tagbar'
 Plug 'puremourning/vimspector'
+Plug 'easymotion/vim-easymotion'
 
 " Initialize plugin system
 call plug#end()
@@ -99,6 +100,9 @@ set backspace=indent,eol,start
 " airline
 let g:airline_theme='one'
 let g:airline#extensions#tabline#enabled = 1
+
+" rust
+let g:rustfmt_autosave = 1
 
 " fzf
 map <C-p> :GFiles --cached --others --exclude-standard<CR>
@@ -231,3 +235,12 @@ nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<
 nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
 inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+
+" easymotion
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+nmap t <Plug>(easymotion-overwin-f)
+
+" Move to word
+" map  <space>w <Plug>(easymotion-bd-wl)
+nmap <space>w <Plug>(easymotion-bd-wl)
